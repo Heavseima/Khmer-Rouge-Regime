@@ -1,0 +1,288 @@
+/* Movement Section Base Styles */
+.movement {
+    max-width: 100%;
+    background-color: #fff;
+    margin: 1.5rem auto;
+    border-radius: 0.75rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.8s ease forwards;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.movement > h2 {
+    width: 100%;
+    text-align: center;
+    color: #1a1a1a;
+    padding: 1.5rem 1rem;
+    font-size: 2rem;
+    font-weight: 600;
+    background: none;
+    position: relative;
+    margin-bottom: 1rem;
+    transition: color 0.3s ease;
+}
+
+.movement > h2:hover {
+    color: #4a4a4a;
+}
+
+.movement > h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0.75rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40px;
+    height: 3px;
+    background: linear-gradient(to right, #3f3f3f, #6a6a6a);
+    border-radius: 1.5px;
+    transition: width 0.3s ease;
+}
+
+.movement > h2:hover::after {
+    width: 80px;
+}
+
+.movement-content {
+    padding: 1.5rem;
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    opacity: 0;
+    animation: fadeIn 0.8s ease 0.3s forwards;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Figure and Image Styles */
+figure {
+    width: 100%;
+    margin: 0;
+    border-radius: 0.75rem;
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+figure:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 12px -3px rgba(0, 0, 0, 0.1);
+}
+
+.movement img {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.movement img:hover {
+    transform: scale(1.03);
+}
+
+.movement figcaption {
+    margin: 0.75rem 0;
+    text-align: center;
+    color: #666;
+    font-style: italic;
+    font-size: 0.875rem;
+    transition: color 0.3s ease;
+}
+
+/* Content Container Styles */
+.movement-container {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 1rem;
+    opacity: 0;
+    animation: fadeIn 0.8s ease 0.6s forwards;
+}
+
+.movement-container h2 {
+    color: #1a1a1a;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    font-weight: 600;
+    transition: transform 0.3s ease;
+}
+
+.movement-container h2:hover {
+    transform: translateX(5px);
+}
+
+.movement-container p {
+    color: #4a4a4a;
+    line-height: 1.6;
+    margin-bottom: 1.25rem;
+    font-size: 1rem;
+    transition: color 0.3s ease;
+}
+
+.movement-container ul {
+    margin: 1.25rem 0 1.25rem 1.25rem;
+    color: #4a4a4a;
+}
+
+.movement-container li {
+    margin-bottom: 0.5rem;
+    line-height: 1.5;
+    position: relative;
+    padding-left: 0.75rem;
+    font-size: 0.95rem;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.movement-container li:hover {
+    transform: translateX(3px);
+    color: #1a1a1a;
+}
+
+.movement-container li::before {
+    content: '•';
+    position: absolute;
+    left: -0.75rem;
+    color: #6a6a6a;
+}
+
+/* Scroll Reveal Animation */
+.movement-container > * {
+    opacity: 0;
+    animation: slideInFromBottom 0.6s ease forwards;
+}
+
+@keyframes slideInFromBottom {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.movement-container > *:nth-child(1) { animation-delay: 0.2s; }
+.movement-container > *:nth-child(2) { animation-delay: 0.4s; }
+.movement-container > *:nth-child(3) { animation-delay: 0.6s; }
+.movement-container > *:nth-child(4) { animation-delay: 0.8s; }
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .movement-content {
+        padding: 1.25rem;
+    }
+    
+    .movement > h2 {
+        font-size: 1.75rem;
+        padding: 1.25rem 1rem;
+    }
+    
+    .movement img {
+        height: 350px;
+    }
+}
+
+@media (max-width: 768px) {
+    .movement {
+        margin: 1rem auto;
+    }
+    
+    .movement > h2 {
+        font-size: 1.5rem;
+        padding: 1rem;
+    }
+    
+    .movement-content {
+        padding: 1rem;
+        gap: 1.5rem;
+    }
+    
+    .movement-container h2 {
+        font-size: 1.25rem;
+    }
+    
+    .movement img {
+        height: 250px;
+    }
+    
+    .movement-container {
+        padding: 0 0.75rem;
+    }
+    
+    .movement-container p {
+        font-size: 0.95rem;
+        line-height: 1.5;
+        margin-bottom: 1rem;
+    }
+    
+    .movement-container li {
+        font-size: 0.9rem;
+        margin-bottom: 0.4rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .movement {
+        margin: 0.75rem auto;
+        border-radius: 0.5rem;
+    }
+    
+    .movement > h2 {
+        font-size: 1.25rem;
+        padding: 0.875rem;
+    }
+    
+    .movement-content {
+        padding: 0.75rem;
+        gap: 1.25rem;
+    }
+    
+    .movement img {
+        height: 200px;
+    }
+    
+    .movement-container {
+        padding: 0 0.5rem;
+    }
+    
+    .movement-container h2 {
+        font-size: 1.125rem;
+        margin-bottom: 0.75rem;
+    }
+    
+    .movement-container p {
+        font-size: 0.875rem;
+        line-height: 1.4;
+        margin-bottom: 0.875rem;
+    }
+    
+    .movement-container li {
+        font-size: 0.875rem;
+        margin-bottom: 0.35rem;
+        line-height: 1.4;
+    }
+    
+    .movement figcaption {
+        font-size: 0.8rem;
+        margin: 0.5rem 0;
+    }
+}

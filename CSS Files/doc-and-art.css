@@ -1,0 +1,347 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+
+/* Base Styles */
+.documentary {
+    min-height: 100vh;
+    width: 100%;
+    background-image: linear-gradient(rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.95)), url(../image/documentary.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    padding: 32px 16px;
+    font-family: 'Inter', sans-serif;
+}
+
+/* Card Containers */
+.doc-content, .article {
+    background-color: #ffffff;
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 24px;
+    border-radius: 12px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+}
+
+/* Headers */
+.doc-content h2, .article-header h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #111827;
+    margin-bottom: 16px;
+}
+
+.border-bottom, .border-bottom-art {
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(to right, #e5e7eb, #f3f4f6);
+    margin-bottom: 20px;
+}
+
+/* Video Section */
+.video-container {
+    position: relative;
+    width: 100%;
+    margin-bottom: 16px;
+}
+
+.doc-vdo {
+    display: flex;
+    gap: 20px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    padding: 8px 0;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+}
+
+.doc-vdo::-webkit-scrollbar {
+    display: none;
+}
+
+.doc-vdo figure {
+    flex: 0 0 300px;
+    scroll-snap-align: start;
+    position: relative;
+}
+
+.doc-vdo-style {
+    width: 100%;
+    aspect-ratio: 16/9;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.doc-vdo figcaption {
+    margin-top: 8px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #374151;
+    text-align: left;
+}
+
+.doc-vdo figcaption a {
+    color: inherit;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.doc-vdo figcaption a:hover {
+    color: #111827;
+}
+
+/* Scroll Indicators */
+.scroll-indicator {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 16px;
+}
+
+.scroll-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: #e5e7eb;
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+}
+
+.scroll-dot.active {
+    background-color: #374151;
+}
+
+.scroll-hint {
+    position: absolute;
+    right: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 8px;
+    border-radius: 50%;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    animation: pulse 2s infinite;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+@keyframes pulse {
+    0% { transform: translateY(-50%) scale(1); }
+    50% { transform: translateY(-50%) scale(1.1); }
+    100% { transform: translateY(-50%) scale(1); }
+}
+
+/* Article Section */
+.article {
+    margin-top: 24px;
+}
+
+.article-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+}
+
+.article-1 {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 16px;
+    border-radius: 8px;
+    background-color: #f9fafb;
+    transition: all 0.2s ease;
+}
+
+.article-1:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.article-1.hidden {
+    display: none;
+}
+
+.article-container img {
+    width: 100%;
+    aspect-ratio: 16/9;
+    object-fit: cover;
+    border-radius: 6px;
+}
+
+.article-text {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.article-text h4 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #111827;
+    line-height: 1.4;
+    margin: 0;
+}
+
+.article-text a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.article-text p {
+    font-size: 0.875rem;
+    color: #4b5563;
+    line-height: 1.5;
+    margin: 0;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.read-more {
+    display: inline-flex;
+    align-items: center;
+    padding: 6px 12px;
+    background-color: #f3f4f6;
+    border-radius: 6px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: #374151;
+    text-decoration: none;
+    transition: background-color 0.2s ease;
+    margin-top: auto;
+}
+
+.read-more:hover {
+    background-color: #e5e7eb;
+}
+
+/* See More Button */
+.see-more-btn {
+    display: block;
+    margin: 24px auto 0;
+    padding: 8px 16px;
+    background-color: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 6px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #374151;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.see-more-btn:hover {
+    background-color: #f9fafb;
+    border-color: #d1d5db;
+}
+
+/* Responsive Styles */
+@media screen and (max-width: 1024px) {
+    .doc-content, .article {
+        padding: 20px;
+    }
+
+    .doc-vdo figure {
+        flex: 0 0 400px;
+    }
+
+    .article-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .documentary {
+        padding: 16px 12px;
+        gap: 16px;
+    }
+
+    .recommend {
+        display: none;
+    }
+
+    .doc-content, .article {
+        padding: 16px;
+    }
+
+    .doc-content h2, .article-header h2 {
+        font-size: 1.25rem;
+    }
+
+    .doc-vdo figure {
+        flex: 0 0 calc(100% - 32px);
+    }
+
+    .article-container {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .article-text h4 {
+        font-size: 0.875rem;
+    }
+
+    .article-text p {
+        font-size: 0.75rem;
+        -webkit-line-clamp: 2;
+    }
+
+    .read-more {
+        font-size: 0.75rem;
+        padding: 4px 8px;
+    }
+
+    .see-more-btn {
+        font-size: 0.8125rem;
+        padding: 6px 12px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .documentary {
+        padding: 12px 8px;
+    }
+
+    .doc-content, .article {
+        padding: 12px;
+    }
+
+    .doc-vdo {
+        gap: 16px;
+    }
+
+    .doc-vdo figure {
+        flex: 0 0 calc(100% - 24px);
+    }
+
+    .scroll-dot {
+        width: 6px;
+        height: 6px;
+    }
+
+    .article-1 {
+        padding: 12px;
+    }
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideIn {
+    from { transform: translateY(20px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+.article-1 {
+    animation: slideIn 0.3s ease forwards;
+}
