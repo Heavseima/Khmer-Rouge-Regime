@@ -3,7 +3,7 @@
 .our-team {
     display: flex;
     justify-content: flex-start;
-    height: 100vh;
+    height: 87vh;
     box-sizing: border-box;
     max-width: 100%;
     gap: 40px;
@@ -105,6 +105,62 @@
     font-size: 1.5rem;
     margin-top: 9px;
     margin-left: 10px;
+}
+
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+    .meet-our-team {
+        height: auto;
+        padding: 2rem 0;
+    }
+
+    .meet-our-team h3 {
+        font-size: 2rem;
+        margin-bottom: 2rem;
+    }
+
+    .member-container {
+        width: 95%;
+        padding: 0 20px;
+        gap: 20px;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .member-container > * {
+        width: 220px;
+        height: 400px;
+        padding: 20px;
+    }
+
+    .member-container img {
+        height: 150px;
+        width: 150px;
+        margin-bottom: 15px;
+    }
+
+    .member-container h4 {
+        font-size: 1.3rem;
+    }
+
+    .member-container p {
+        font-size: 0.9rem;
+    }
+
+    .member-container #border {
+        width: 80px;
+        height: 3px;
+        margin-bottom: 15px;
+    }
+
+    .media-logo {
+        font-size: 1.3rem;
+        margin-top: 8px;
+    }
+
+    .media-logo > * {
+        margin-right: 10px;
+    }
 }
 
 /* Mobile Responsiveness */

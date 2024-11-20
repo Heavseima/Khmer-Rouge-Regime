@@ -112,3 +112,68 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 });
+
+
+document.addEventListener('DOMContentLoaded', () => {
+    const checkbox = document.getElementById('check');
+    const menuIcon = document.getElementById('menu-icon');
+    const closeIcon = document.getElementById('close-icon');
+    const navBar = document.querySelector('.nav-bar');
+    const navLinks = document.querySelectorAll('.nav-bar a');
+    const icons = document.querySelector('.icons');
+
+    function openNavbar() {
+        checkbox.checked = true;
+        menuIcon.style.display = 'none';
+        closeIcon.style.display = 'inline-flex';
+        navBar.style.height = '16.5rem';
+        navLinks.forEach((link, index) => {
+            link.style.opacity = '1';
+            link.style.transform = 'translateY(0)';
+            link.style.transitionDelay = `calc(0.12s * ${index})`;
+        });
+    }
+
+    function closeNavbar() {
+        checkbox.checked = false;
+        menuIcon.style.display = 'inline-flex';
+        closeIcon.style.display = 'none';
+        navBar.style.height = '0';
+        navLinks.forEach(link => {
+            link.style.opacity = '0';
+            link.style.transform = 'translateY(-10px)';
+            link.style.transitionDelay = '0s';
+        });
+    }
+
+    // Menu icon click
+    menuIcon.addEventListener('click', (e) => {
+        e.stopPropagation();
+        openNavbar();
+    });
+
+    // Close icon click
+    closeIcon.addEventListener('click', (e) => {
+        e.stopPropagation();
+        closeNavbar();
+    });
+
+    // Close when nav links clicked
+    navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            closeNavbar();
+        });
+    });
+
+    // Close when clicking outside
+    document.addEventListener('click', (e) => {
+        if (checkbox.checked && 
+            !navBar.contains(e.target) && 
+            !icons.contains(e.target)) {
+            closeNavbar();
+        }
+    });
+
+    // Initial setup
+    closeIcon.style.display = 'none';
+});

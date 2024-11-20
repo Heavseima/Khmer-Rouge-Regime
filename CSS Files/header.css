@@ -113,7 +113,7 @@
         overflow: hidden;
     }
     #check:checked~.nav-bar {
-        height: 16rem;
+        height: 16.5rem;
     }
     .nav-bar a {
         display: block;
@@ -158,11 +158,11 @@
     }
 
     .header {
-        padding: 0.8rem 4%;
+        padding: 1.2rem 4%;
     }
 
     .icons {
-        font-size: 2rem;
+        font-size: 2.5rem;
     }
 
     html {

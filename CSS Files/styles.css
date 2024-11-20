@@ -204,6 +204,12 @@ body {
 
 /* Mobile Responsiveness */
 @media screen and (max-width: 768px) {
+    
+    #landing-page {
+        padding-top: 7rem;
+        animation: none;
+    }
+
     .landing-text {
         width: 75%;
         max-width: 90%;

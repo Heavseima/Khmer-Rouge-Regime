@@ -115,14 +115,17 @@
 
 /* Tablet Responsive Design */
 @media (max-width: 1024px) {
-    .individual-card {
-        flex-direction: column;
-        max-width: 500px;
+    .individual-image {
+        height: 400px; 
     }
 
-    .individual-image {
-        flex: 0 0 300px;
-        width: 100%;
+    .individual-image img {
+        object-fit: cover;
+        object-position: top center;
+    }
+
+    .individual-details {
+        padding: 1.2rem;
     }
 }
 
@@ -133,13 +136,19 @@
     }
 
     .individual-card {
+        height: auto; 
         flex-direction: column;
         max-width: 100%;
         margin-bottom: 0.5rem;
     }
 
     .individual-image {
-        flex: 0 0 250px;
+        height: 350px; 
+    }
+
+    .individual-image img {
+        object-fit: cover;
+        object-position: top center;
     }
 
     .individual-details {
@@ -159,15 +168,11 @@
 /* Small Mobile Devices */
 @media (max-width: 480px) {
     .individual-image {
-        flex: 0 0 250px;
+        height: 300px; 
     }
 
     .title-three-indiv h2 {
         font-size: 1.3rem;
-    }
-
-    .individual-image img {
-        object-position: top;
     }
 
     .image-overlay {
