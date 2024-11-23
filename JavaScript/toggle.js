@@ -9,6 +9,21 @@ document.addEventListener('DOMContentLoaded', function() {
     videos.forEach((_, index) => {
         const dot = document.createElement('div');
         dot.className = 'scroll-dot' + (index === 0 ? ' active' : '');
+        dot.setAttribute('data-index', index);
+        
+        // Make dots clickable
+        dot.addEventListener('click', () => {
+            // Calculate the scroll position for the specific video
+            const itemWidth = videos[0].offsetWidth + 20; // Including gap
+            const scrollPosition = index * itemWidth;
+            
+            // Smooth scroll to the selected video
+            videoContainer.scrollTo({
+                left: scrollPosition,
+                behavior: 'smooth'
+            });
+        });
+        
         scrollIndicator.appendChild(dot);
     });
     
@@ -20,12 +35,20 @@ document.addEventListener('DOMContentLoaded', function() {
     scrollHint.innerHTML = '→';
     videoContainer.parentElement.appendChild(scrollHint);
     
-    // Show scroll hint if there's horizontal scroll
-    if (videoContainer.scrollWidth > videoContainer.clientWidth) {
+    // Check if this is the landing page
+    const isLandingPage = window.location.pathname === '/' || window.location.pathname === '/index.html';
+    
+    // Show scroll hint only if there's horizontal scroll on landing page
+    if (isLandingPage && videoContainer.scrollWidth > videoContainer.clientWidth) {
         scrollHint.style.opacity = '1';
+        
+        // Hide hint after 3 seconds
         setTimeout(() => {
             scrollHint.style.opacity = '0';
         }, 3000);
+    } else {
+        // Ensure hint is hidden
+        scrollHint.style.opacity = '0';
     }
     
     // Update active dot on scroll
@@ -43,6 +66,23 @@ document.addEventListener('DOMContentLoaded', function() {
         }, 50);
     });
     
+    // Touch scroll handling for mobile
+    let touchStartX = 0;
+    let touchEndX = 0;
+    
+    videoContainer.addEventListener('touchstart', (e) => {
+        touchStartX = e.touches[0].clientX;
+    });
+    
+    videoContainer.addEventListener('touchmove', (e) => {
+        touchEndX = e.touches[0].clientX;
+        const diffX = touchStartX - touchEndX;
+        videoContainer.scrollLeft += diffX;
+        touchStartX = touchEndX;
+    });
+});
+
+document.addEventListener('DOMContentLoaded', function() {
     // Article visibility toggle
     const articles = document.querySelectorAll('.article-1');
     const seeMoreBtn = document.querySelector('.see-more-btn');
@@ -64,22 +104,19 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
         
+        // Only handle scroll back on "See Less"
+        if (!isExpanded) {
+            // Store the original position of the "See More" button
+            const originalTop = seeMoreBtn.getBoundingClientRect().top + window.scrollY;
+            
+            // Scroll back to the original position, with a bit more offset
+            window.scrollTo({
+                top: originalTop - 250, // Increased offset to scroll higher
+                behavior: 'smooth'
+            });
+        }
+        
         seeMoreBtn.textContent = isExpanded ? 'See Less' : 'See More Articles';
-    });
-    
-    // Touch scroll handling for mobile
-    let touchStartX = 0;
-    let touchEndX = 0;
-    
-    videoContainer.addEventListener('touchstart', (e) => {
-        touchStartX = e.touches[0].clientX;
-    });
-    
-    videoContainer.addEventListener('touchmove', (e) => {
-        touchEndX = e.touches[0].clientX;
-        const diffX = touchStartX - touchEndX;
-        videoContainer.scrollLeft += diffX;
-        touchStartX = touchEndX;
     });
 });
 
@@ -96,6 +133,9 @@ document.addEventListener('DOMContentLoaded', function() {
             expandButton.textContent = 'Read more';
             
             expandButton.addEventListener('click', function() {
+                // Store the original position before expanding
+                const originalTop = parentCard.getBoundingClientRect().top + window.scrollY;
+                
                 content.classList.toggle('expanded');
                 parentCard.classList.toggle('expanded-card');
                 
@@ -104,6 +144,11 @@ document.addEventListener('DOMContentLoaded', function() {
                     parentCard.scrollIntoView({ behavior: 'smooth', block: 'start' });
                     expandButton.textContent = 'Read less';
                 } else {
+                    // Scroll back to the original position when collapsing
+                    window.scrollTo({
+                        top: originalTop - 250, // Slight offset to ensure the card is fully visible
+                        behavior: 'smooth'
+                    });
                     expandButton.textContent = 'Read more';
                 }
             });
@@ -112,7 +157,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 });
-
 
 document.addEventListener('DOMContentLoaded', () => {
     const checkbox = document.getElementById('check');
