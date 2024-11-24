@@ -1,0 +1,246 @@
+/* Keep your original base styles */
+.three-roles {
+    max-width: 100%;
+    background-color: #fff;
+    margin: 1.5rem auto;
+    border-radius: 0.75rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.8s ease forwards;
+}
+
+/* Keep all your original animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Keep your original header styles */
+.three-roles > h2 {
+    width: 100%;
+    text-align: center;
+    color: #1a1a1a;
+    padding: 1.5rem 1rem;
+    font-size: 2rem;
+    font-weight: 600;
+    background: none;
+    position: relative;
+    margin-bottom: 1rem;
+    transition: color 0.3s ease;
+}
+
+.three-roles > h2:hover {
+    color: #4a4a4a;
+}
+
+.three-roles > h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0.75rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40px;
+    height: 3px;
+    background: linear-gradient(to right, #3f3f3f, #6a6a6a);
+    border-radius: 1.5px;
+    transition: width 0.3s ease;
+}
+
+.three-roles > h2:hover::after {
+    width: 80px;
+}
+
+/* First content section remains unchanged */
+.three-role-content:first-of-type {
+    padding: 1.5rem;
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    opacity: 0;
+    animation: fadeIn 0.8s ease 0.3s forwards;
+}
+
+/* Modified styles for second and third sections */
+.three-role-content:not(:first-of-type) {
+    padding: 2.5rem;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: flex-start;
+    gap: 3rem;
+    opacity: 0;
+    animation: fadeIn 0.8s ease 0.3s forwards;
+}
+
+/* Alternate layout for third section */
+.three-role-content:nth-child(5) {
+    flex-direction: row-reverse;
+}
+
+/* Figure styles for all sections */
+figure {
+    margin: 0;
+    border-radius: 0.75rem;
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Specific figure styles for second and third sections */
+.three-role-content:not(:first-of-type) figure {
+    flex: 0 0 45%;
+    max-width: 45%;
+}
+
+.three-roles img {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.three-roles figcaption {
+    margin: 0.75rem 0;
+    text-align: center;
+    color: #666;
+    font-style: italic;
+    font-size: 0.875rem;
+    transition: color 0.3s ease;
+    padding: 0 0.5rem;
+}
+
+/* Hover effects */
+figure:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 12px -3px rgba(0, 0, 0, 0.1);
+}
+
+.three-roles img:hover {
+    transform: scale(1.03);
+}
+
+/* Content container styles */
+.three-role-content:not(:first-of-type) .three-role-container {
+    flex: 1;
+    min-width: 0; /* Allows text to wrap properly */
+    padding: 0;
+}
+
+.three-role-container h2 {
+    color: #1a1a1a;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    font-weight: 600;
+    transition: transform 0.3s ease;
+}
+
+.three-role-container p {
+    color: #4a4a4a;
+    line-height: 1.6;
+    margin-bottom: 1.25rem;
+    font-size: 1rem;
+    transition: color 0.3s ease;
+}
+
+.three-role-container ul {
+    margin: 1.25rem 0;
+    color: #4a4a4a;
+    padding-left: 1.25rem;
+}
+
+.three-role-container li {
+    margin-bottom: 0.75rem;
+    line-height: 1.5;
+    position: relative;
+    font-size: 0.95rem;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+/* Responsive design */
+@media (max-width: 1024px) {
+    .three-role-content:not(:first-of-type) {
+        padding: 2rem;
+        gap: 2.5rem;
+    }
+    
+    .three-roles img {
+        height: 350px;
+    }
+}
+
+@media (max-width: 768px) {
+    .three-role-content:not(:first-of-type) {
+        flex-direction: column;
+        padding: 1.5rem;
+        gap: 2rem;
+    }
+
+    .three-roles > h2 {
+        font-size: 1.3rem;
+    }
+
+    .three-role-content:not(:first-of-type) figure {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+    
+    .three-roles img {
+        height: 300px;
+    }
+    
+    .three-role-container {
+        padding: 0 0.75rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .three-role-content:not(:first-of-type) {
+        padding: 1rem;
+        gap: 1.5rem;
+    }
+    
+    .three-roles img {
+        height: 200px;
+    }
+    
+    .three-role-container {
+        padding: 0 0.5rem;
+    }
+    
+    .three-role-container h2 {
+        font-size: 1.25rem;
+        margin-bottom: 0.75rem;
+    }
+    
+    .three-role-container p {
+        font-size: 0.875rem;
+        line-height: 1.4;
+        margin-bottom: 0.875rem;
+    }
+    
+    .three-role-container li {
+        font-size: 0.875rem;
+        margin-bottom: 0.5rem;
+    }
+    
+    .three-roles figcaption {
+        font-size: 0.8rem;
+        margin: 0.5rem 0;
+    }
+}
