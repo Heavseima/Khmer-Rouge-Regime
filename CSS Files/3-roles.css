@@ -1,4 +1,7 @@
-/* Keep your original base styles */
+.red-txt {
+    color: red;
+}
+
 .three-roles {
     max-width: 100%;
     background-color: #fff;
@@ -192,7 +195,7 @@ figure:hover {
     }
 
     .three-roles > h2 {
-        font-size: 1.3rem;
+        font-size: 1.4rem;
     }
 
     .three-role-content:not(:first-of-type) figure {
