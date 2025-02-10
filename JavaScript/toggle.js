@@ -177,3 +177,11 @@ document.addEventListener('DOMContentLoaded', () => {
     // Initial setup
     closeIcon.style.display = 'none';
 });
+
+const copyRight = document.querySelector(".copyright")
+const currentDate = new Date()
+copyRight.innerHTML = `
+    <small>
+        All Rights Reserved by &copy; Khmer Rouge Regime ${currentDate.getFullYear().toString()}.
+    </small>
+`
